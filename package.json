@@ -1,0 +1,25 @@
+{
+  "name": "hoax",
+  "version": "1.0.0",
+  "description": "hoax is phishing tool which contain huge collection of phishing site like Facebook, instagram, google and etc.",
+  "main": "attack.py",
+  "scripts": {
+    "test": "py attack.py"
+  },
+  "keywords": [
+    "phishing",
+    "site",
+    "spoofing",
+    "website",
+    "spoofing",
+    "facebook",
+    "hacking",
+    "social",
+    "media",
+    "hacking",
+    "instagram",
+    "hacking"
+  ],
+  "author": "mohan putta",
+  "license": "ISC"
+}

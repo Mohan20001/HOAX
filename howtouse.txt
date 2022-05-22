@@ -1,0 +1,22 @@
+step 1: install required modules for python.
+
+    => install python.
+     
+    => pip install pyngrok
+
+    => pip install pyfiglet
+     
+    => you need to install git also
+
+step 2: download github repository.
+   
+     => git clone https://github.com/Mohan20001/hoax.git
+
+step 3: change directory.
+    
+     window ,linux and macOS.
+     => cd hoax/
+
+step 4: start script.
+
+    python attack.py  (or)  py attack.py (or) attack.py
