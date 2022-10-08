@@ -17,7 +17,7 @@ step 3: installation.
      window ,linux and macOS.
      => cd hoax/
      
-     => run command "install".
+     => run command "install". //for windows
 
 step 4: start script.
 
