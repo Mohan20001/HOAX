@@ -1,6 +1,4 @@
 step 1: Required programming languages and tools.
-     
-    => install php.
     
     => install python.
      
@@ -24,4 +22,4 @@ step 4: start script.
     python hoax.py  (or)  py hoax.py (or) hoax.py
 
 
-NOTE : You need replace ngrok authontication token in "hoax.py" file, "https://www.ngrok.com/"
+NOTE : You need a ngrok auth token, "https://www.ngrok.com/"
