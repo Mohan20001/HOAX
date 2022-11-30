@@ -15,11 +15,11 @@ def get_key():
 NGROK_KEY = get_key().strip()
 
 # auth_key = "299FED0QV81gQREsrXHLmdey2S2_5saXiXSDzhSgxp6AcWPgf"
-ascii_banner = pyfiglet.figlet_format("HOAX!")
-print()
-print(ascii_banner)
-print(" "*10 + "Coded with <3, cj.")
-print(" "+"*"*16 + " HOAX " + "*"*16)
+# ascii_banner = pyfiglet.figlet_format("HOAX!")
+# print()
+# print(ascii_banner)
+# print(" "*10 + "Coded with <3, cj.")
+# print(" "+"*"*16 + " HOAX " + "*"*16)
 
 #help, manual for commands
 
@@ -110,7 +110,7 @@ def help(Command):
 #menu items
 def menu():
     print()
-    print(" Choose the option..!")
+    print(" [Info] Choose the option..!")
     print(" [1] Facebook\t\t[2] Instagram")
     print(" [3] Google\t\t[4] Twitter")
     print(" [5] Linked In\t\t[6] Snapchat")
@@ -151,6 +151,7 @@ def options(USER_INPUT):
                 print(" [+] connecting to the YouTube...")
             case "0":
                 exit()
+                # run.main_home()
             case defualt:
                 print(" ERR: Command not found, \""+USER_INPUT+"\""+" is not valid cammand!")
     else:
@@ -197,5 +198,5 @@ def main():
         main()
 
 #function call section
-menu()
-main()
+# menu()
+# main()
