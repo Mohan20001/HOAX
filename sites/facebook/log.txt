@@ -1,7 +1,0 @@
-jazoest=2905
-lsd=AVpFZQTQSTE
-email=mohanputta19@gmail.com
-pass=password
-login_source=comet_headerless_login
-next=
-

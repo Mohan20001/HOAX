@@ -1,16 +1,33 @@
 import ip_tracer.ip_tracer as ip_trac
 import pyfiglet
 import hoax
+import colorama
+from colorama import Fore
+import os
+os.system("cls")
+colorama.init()
 
-ascii_banner = pyfiglet.figlet_format("HOAX!")
+# print(" █████   █████    ███████      █████████   █████ █████")
+# print("░░███   ░░███   ███░░░░░███   ███░░░░░███ ░░███ ░░███ ")
+# print(" ░███    ░███  ███     ░░███ ░███    ░███  ░░███ ███  ")
+# print(" ░███████████ ░███      ░███ ░███████████   ░░█████   ")
+# print(" ░███░░░░░███ ░███      ░███ ░███░░░░░███    ███░███  ")
+# print(" ░███    ░███ ░░███     ███  ░███    ░███   ███ ░░███ ")
+# print(" █████   █████ ░░░███████░   █████   █████ █████ █████")
+# print("░░░░░   ░░░░░    ░░░░░░░    ░░░░░   ░░░░░ ░░░░░ ░░░░░ ")
+                                                      
+                                                      
+                                                      
+
+ascii_banner = pyfiglet.figlet_format(" HOAX!", 'smkeyboard')
 print()
 print(ascii_banner)
-print(" "*10 + "Coded with <3, cj.")
+print("developed by: mohanputta.")
 print(" "+"*"*16 + " HOAX " + "*"*16)
 
-print(" [Info] Choose the option..!")
-print(" [a] IP Tracing\t\t[b] Phishing")
-print(" [0] Exit")
+# print(" ["+Fore.YELLOW+"Info"+Fore.WHITE+"] Choose the option..!")
+print(" ["+Fore.CYAN+"a"+Fore.WHITE+"] IP Tracing\t\t["+Fore.CYAN+"b"+Fore.WHITE+"] Phishing")
+print(" ["+Fore.CYAN+"0"+Fore.WHITE+"] Exit")
 
 history = "a"
 
