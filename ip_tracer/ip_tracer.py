@@ -1,14 +1,14 @@
 import requests
 import json
-# import colorama
-# from colorama import Fore
+import colorama
+from colorama import Fore
 import os
 
-# colorama.init()
+colorama.init()
 
-def getIpDetails():
+def getIpDetails(uip):
     try:
-        ip_adress = input("Enter IP-Adress: ")
+        ip_adress = uip.strip()
         data = requests.get('http://ipinfo.io/'+ ip_adress +'?token=2e4a0a4cea187d').text
         ip_data = str(data)
         json_data = json.loads(ip_data)
@@ -33,6 +33,23 @@ def getIpDetails():
     except:
         print(" ["+Fore.RED+"ERR"+Fore.WHITE+"] Invalid Ip Adress!")
 
+def run_command(cmd):
+    cmd = cmd.lower()
+    cmd = cmd.split()
+    if len(cmd) != 0 and len(cmd) > 1:
+        match cmd[0]:
+            case "ip":
+                getIpDetails(str(cmd[1]))
+    else:
+        match cmd[0]:
+            case "getr":
+                readRecord()
+            case "remr":
+                clearRecord()
+            case "0":
+                exit()
+
+
 def readRecord():
     f = open('ip_records.txt', 'r')
     records = f.readlines()
@@ -45,7 +62,13 @@ def clearRecord():
     f.seek(0)
     f.truncate()
 
+def main():
+    while True:
+        print()
+        user_input = input("HOAX/IP-Tracer>> ")
+        run_command(user_input)
 
+# main()
 # getIpDetails()
 # readRecord()
 # clearRecord()

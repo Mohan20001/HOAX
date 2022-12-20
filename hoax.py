@@ -199,7 +199,7 @@ def server_run(str_path, prt):
 def main():
     while True:
         print()
-        user_input = input("HOAX>> ")
+        user_input = input("HOAX/phishing>> ")
         options(user_input)
         main()
 
