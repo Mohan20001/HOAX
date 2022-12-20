@@ -4,8 +4,6 @@ import hoax
 import colorama
 from colorama import Fore
 import os
-# from GetIP.manipulate_records import *
-from GetIP.getip import home
 os.system("cls")
 colorama.init()
 
